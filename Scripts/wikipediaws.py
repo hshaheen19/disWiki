@@ -5,4 +5,4 @@ summarylist = []
 
 for results in searchresults:
     summarylist.append(wikipedia.summary(results))
-print(re)
+print(summarylist)
