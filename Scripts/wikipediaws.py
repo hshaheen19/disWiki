@@ -24,9 +24,19 @@ def jaccard_similarity(list1, list2):
     intersection = len(list(set(list1).intersection(list2)))
     union = (len(list1) + len(list2)) - intersection
     return float(intersection) / union
-
-
-print(jaccard_similarity(tokenList[0],tokenizedSentence))
-
-
+    
+#calculats the sense with the biggest jaccard similarity and prints it
+#Needs to be cleand up
+def print_js(tlist, tsentence):
+    length = len(tlist)
+    i = 0
+    jsresult = []
+    while i < length:
+        jsresult.append(jaccard_similarity(tlist[i],tsentence))
+        i += 1
+    print(max(jsresult))
+    indextlist = jsresult.index(max(jsresult))
+    print(tlist[indextlist])
+        
+print_js(tokenList,tokenizedSentence)
 
