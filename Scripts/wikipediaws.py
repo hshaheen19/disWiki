@@ -8,10 +8,14 @@ newSummary = []
 mainSentence = "This plant requires watering every morning Plants"
 mainSentence = mainSentence.replace("plant","")
 
+#replace function doesnt seem to work!
+
 tokenizedSentence = re.sub("[^\w]", " ", mainSentence).split()
+print(searchresults, '\n')
 
 for results in searchresults:
-    summarylist.append(wikipedia.summary(results))
+    print(wikipedia.summary(results, 2), '\n')
+    summarylist.append(wikipedia.page(results).content)
 
 for item in summarylist:
     newSummary.append(item.replace("plant",""))
@@ -33,10 +37,11 @@ def print_js(tlist, tsentence):
     jsresult = []
     while i < length:
         jsresult.append(jaccard_similarity(tlist[i],tsentence))
+        print('Jaccard Similarity of sense', i, '\n', jaccard_similarity(tlist[i], tsentence), '\n')
         i += 1
     print(max(jsresult))
     indextlist = jsresult.index(max(jsresult))
-    print(tlist[indextlist])
+    print(summarylist[indextlist])
         
 print_js(tokenList,tokenizedSentence)
 
