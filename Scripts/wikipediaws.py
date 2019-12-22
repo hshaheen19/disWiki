@@ -5,7 +5,7 @@ searchresults = wikipedia.search("plant")
 summarylist = []
 newSummary = []
 
-mainSentence = "This plant requires watering every morning Plants"
+mainSentence = "This plant requires watering every morning"
 mainSentence = mainSentence.replace("plant","")
 
 #replace function doesnt seem to work!
