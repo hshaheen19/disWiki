@@ -7,6 +7,7 @@ summarylist = []
 newSummary = []
 f = codecs.open("APW19980603_0791.htm", 'r')
 mainSentence = f.read()
+print(mainSentence)
 #mainSentence = mainSentence.replace("plant","")
 
 #replace function doesnt seem to work!
