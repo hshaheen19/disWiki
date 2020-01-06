@@ -1,12 +1,13 @@
 import wikipedia
 import re 
+import codecs
 
-searchresults = wikipedia.search("plant")
+searchresults = wikipedia.search("THAILAND ")
 summarylist = []
 newSummary = []
-
-mainSentence = "This plant requires watering every morning"
-mainSentence = mainSentence.replace("plant","")
+f = codecs.open("APW19980603_0791.htm", 'r')
+mainSentence = f.read()
+#mainSentence = mainSentence.replace("plant","")
 
 #replace function doesnt seem to work!
 
