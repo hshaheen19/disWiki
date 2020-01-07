@@ -1,14 +1,12 @@
 import wikipedia
 import re 
-import codecs
 
-searchresults = wikipedia.search("THAILAND ")
+searchresults = wikipedia.search("plant")
 summarylist = []
 newSummary = []
-f = codecs.open("APW19980603_0791.htm", 'r')
-mainSentence = f.read()
-print(mainSentence)
-#mainSentence = mainSentence.replace("plant","")
+
+mainSentence = "This plant requires watering every morning"
+mainSentence = mainSentence.replace("plant","")
 
 #replace function doesnt seem to work!
 
@@ -46,4 +44,3 @@ def print_js(tlist, tsentence):
     print(summarylist[indextlist])
         
 print_js(tokenList,tokenizedSentence)
-
