@@ -1,12 +1,12 @@
 import wikipedia
 import re 
 
-searchresults = wikipedia.search("plant")
+searchresults = wikipedia.search("bar")
 summarylist = []
 newSummary = []
 
-mainSentence = "This plant requires watering every morning"
-mainSentence = mainSentence.replace("plant","")
+mainSentence = "we will have fun in the bar"
+mainSentence = mainSentence.replace("bar","")
 
 #replace function doesnt seem to work!
 
@@ -14,11 +14,13 @@ tokenizedSentence = re.sub("[^\w]", " ", mainSentence).split()
 print(searchresults, '\n')
 
 for results in searchresults:
-    print(wikipedia.summary(results, 2), '\n')
-    summarylist.append(wikipedia.page(results).content)
+    if(results != 'Bar (disambiguation)'):
+        summ = wikipedia.summary(results, 2)
+        print(summ, '\n')
+        summarylist.append(wikipedia.page(results).content)
 
 for item in summarylist:
-    newSummary.append(item.replace("plant",""))
+    newSummary.append(item.replace("bar",""))
 
 tokenList = []
 for item in newSummary:

@@ -5,7 +5,7 @@ word = "plant"
 sentence = 'This plant requires watering every morning'
 
 for ss in wn.synsets(word):
-    print(ss, ss.definition())
+   print(ss, ss.definition())
 
 print(lesk(sentence,word))
 print(lesk(sentence,word,'n'))

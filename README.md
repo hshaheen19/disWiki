@@ -10,3 +10,6 @@ It contains the screen shots of output of the given tasks
 # Scripts 
 It contains the scripts for each individual tasks</br>
 *It Needs to change in future*
+
+#DataSets
+Put all the aquaint datasets in this folder
