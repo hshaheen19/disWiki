@@ -9,7 +9,7 @@ import sys
 
 window = tk.Tk()
 window.title("Wikipedia Disambiguation")
-window.geometry("600x450")
+window.geometry("1100x650")
 
 summarylist = []
 newSummary = []
@@ -21,8 +21,10 @@ title = tk.Label(text = "Select word for Disambiguation: ")
 title.grid(column=0, row=0)
 entry_field1 = tk.Entry()
 entry_field1.grid(column=1, row=0)
-textBox = tk.Text(window , height=30, width=100)
-textBox.grid(column = 0, row = 3)
+textBox = tk.Text(window , height=15, width=100)
+textBox.grid(column = 1, row = 3)
+textBox2 = tk.Text(window , height=15, width=100)
+textBox2.grid(column = 1, row = 6)
 
 def open_file():
     file = filedialog.askopenfile(mode = 'r', title="Select a file", filetypes=[("html files", "*.htm")])
@@ -43,7 +45,8 @@ def on_confirm():
     word = entry_field1.get()
     sentence = textBox.get("1.0", 'end-1c')
     a = lesk(word,sentence)
-    print ("\n\nSynset:",wikipedia.summary(a,2))
+    textBox2.insert(tk.END, "Synset: ")
+    textBox2.insert(tk.END, wikipedia.summary(a,2))
 
     #searchresults = wikipedia.search()
     # tokenizedSentence = re.sub("[^\w]", " ", textBox.get("1.0", 'end-1c')).split() 
@@ -59,7 +62,7 @@ def on_confirm():
     # for item in newSummary:
     #     tokenList.append(re.sub("[^\w]", " ", item).split())
     # print_js(tokenList, tokenizedSentence)
-    window.destroy()
+
 
 
 
@@ -85,7 +88,7 @@ functionwords = ['about', 'across', 'against', 'along', 'around', 'at',
                  'else', 'instead', 'anyway', 'incidentally', 'meanwhile']
 
 def overlapcontext( synset, sentence ):
-    print(synset)
+    textBox2.insert(tk.END, synset + "\n")
     summ = wikipedia.page(synset).content
     gloss = set(WordPunctTokenizer().tokenize(summ))
     gloss = gloss.difference( functionwords )

@@ -5,6 +5,34 @@ from nltk.corpus import wordnet
 from nltk.tokenize import WordPunctTokenizer
 import sys
 import wikipedia
+import tkinter as tk
+
+window = tk.Tk()
+window.title("Task 2 - Wikipedia disambiguation")
+window.geometry("950x350")
+word = ""
+sentence = ""
+
+lable1 = tk.Label(text = "Enter Sentence: ")
+guisentence = tk.Entry()
+lable1.grid(column = 0, row = 0)
+guisentence.grid(column = 1, row = 0)
+lable2 = tk.Label(text = "Target word: ")
+guiword = tk.Entry()
+lable2.grid(column = 0, row = 1)
+guiword.grid(column = 1, row = 1)
+button = tk.Button(text="Disabbiguate", command=lambda:on_confirm())
+button.grid(column = 1, row = 2)
+textBox1 = tk.Text(window, height=15, width=100)
+textBox1.grid(column = 1, row = 3)
+
+def on_confirm():
+    sentence = guisentence.get()
+    word = guiword.get()
+    a = lesk(word,sentence)
+    textBox1.insert(tk.END, "\nSynset: ")
+    textBox1.insert(tk.END, wikipedia.summary(a,2))
+
 
 
 functionwords = ['about', 'across', 'against', 'along', 'around', 'at',
@@ -28,7 +56,7 @@ functionwords = ['about', 'across', 'against', 'along', 'around', 'at',
                  'else', 'instead', 'anyway', 'incidentally', 'meanwhile']
 
 def overlapcontext( synset, sentence ):
-    print(synset)
+    textBox1.insert(tk.END, synset + "\n")
     summ = wikipedia.page(synset).content
     gloss = set(WordPunctTokenizer().tokenize(summ))
     #for i in synset.examples():
@@ -61,8 +89,6 @@ def lesk( word, sentence ):
     return bestsense
 
 
-sentence = input("Enter the Sentence (or) Context :")
-word = input("Enter the word :")
 
-a = lesk(word,sentence)
-print ("\n\nSynset:",wikipedia.summary(a,2))
+window.mainloop()
+
